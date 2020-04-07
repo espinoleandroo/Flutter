@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp03/src/pages/alert_page.dart';
 import 'package:flutterapp03/src/pages/avatar_page.dart';
+import 'package:flutterapp03/src/pages/card_page.dart';
 import 'package:flutterapp03/src/pages/home_page.dart';
 
 Map<String, WidgetBuilder> getApplicationRouters(){
@@ -8,5 +9,6 @@ Map<String, WidgetBuilder> getApplicationRouters(){
   '/'       : (BuildContext context) => HomePage(),
   'alert'   : (BuildContext context) => AlertPage(),
   'avatar'  : (BuildContext context) => AvatarPage(),
+    'card'  : (BuildContext context) => CardPage(),
   };
 }

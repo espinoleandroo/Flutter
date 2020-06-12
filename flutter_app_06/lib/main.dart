@@ -15,9 +15,25 @@ class MyApp extends StatefulWidget{
 class _State  extends State<MyApp>{
   bool _isChecked = false;
   bool _value = false;
-  bool _valueRB = false;
+  int _valueRB = 0;
 
-  
+  void _hadleRadio(int value){
+    setState(() {
+      _valueRB = value;
+      switch(_valueRB){
+        case 1:
+          print(('1111'));
+          break;
+        case 2:
+          print(('22222'));
+          break;
+        case 3:
+          print(('33333'));
+          break;
+      }
+    });
+  }
+
   void onChangedCheckBox(bool Value){
     setState(() {
       _isChecked = Value;
@@ -91,20 +107,20 @@ class _State  extends State<MyApp>{
                 children: <Widget>[
                   Radio(
                     value: 1,
-                    groupValue: _value,
-                    onChanged: null,
+                    groupValue: _valueRB,
+                    onChanged: _hadleRadio,
                   ),
                   Text('1'),
                   Radio(
                     value: 2,
-                    groupValue: _value,
-                    onChanged: null,
+                    groupValue: _valueRB,
+                    onChanged: _hadleRadio,
                   ),
                   Text('2'),
                   Radio(
                     value: 3,
-                    groupValue: _value,
-                    onChanged: null,
+                    groupValue: _valueRB,
+                    onChanged: _hadleRadio,
                   ),
                   Text('3'),
                 ],

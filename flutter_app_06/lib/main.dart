@@ -14,27 +14,51 @@ class MyApp extends StatefulWidget{
 
 class _State  extends State<MyApp>{
   bool _isChecked = false;
+  bool _value = false;
   
-  void onChanged(bool Value){
+  void onChangedCheckBox(bool Value){
     setState(() {
       _isChecked = Value;
     });
+  }
+  void onChangedSwitch(bool Value){
+    setState(() {
+      _value = Value;
+    });
+  }
+
+  void getValue(){
+    if(_isChecked){
+      print('check es true');
+    }else{
+      print('check es false');
+    }
   }
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My app'),
+        title: Text('My Controls'),
       ),
       body: Container(
+        padding: EdgeInsets.all(28.0),
         child: Center(
           child: Column(
             children: <Widget>[
-              Text('Opcion'),
+              Text('Checkbox'),
               Checkbox(
                 value: _isChecked,
-                onChanged: (bool value){onChanged(value);},
+                onChanged: (bool value){onChangedCheckBox(value);},
+              ),
+              RaisedButton(
+                onPressed: getValue,
+                child: Text('Click'),
+              ),
+              Text('switch'),
+              Switch(
+                value: _value,
+                onChanged: (bool value){onChangedSwitch(value);},
               )
             ],
           )

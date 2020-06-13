@@ -104,7 +104,22 @@ class _State  extends State<MyApp>{
                   onPressed: () => _showAlert(context, 'lo que sea'),
                   child: Text('Click')
               ),
-
+              Text('Card'),
+              Divider(
+                  height: 5.0
+              ),
+              Card(
+               child: Container(
+                 padding: EdgeInsets.all(28.0),
+                 child: Column(
+                   children: <Widget>[
+                     Image.network('https://avatars2.githubusercontent.com/u/61722433?s=460&u=2df69f8c5c2f4e0f2c12dd0401b789ced8212b03&v=4'),
+                     Text('Leandro'),
+                     Text('Espino')
+                   ],
+                 ),
+               ),
+              )
             ]
           )
         ),

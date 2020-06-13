@@ -16,9 +16,15 @@ class _State  extends State<MyApp>{
   bool _isChecked = false;
   bool _value = false;
   int _valueRB = 0;
+  double _valueS = 0.0;
   DateTime selectedDate;
   TimeOfDay _timeOfDay = TimeOfDay.now();
 
+  void _setValue(double value){
+    setState(() {
+      _valueS = value;
+    });
+  }
   Future<Null> _selectedTime(BuildContext) async{
     final TimeOfDay picked = await showTimePicker(
         context: context,
@@ -172,8 +178,22 @@ class _State  extends State<MyApp>{
               RaisedButton(
                 onPressed: () => {_selectedTime(context)},
                 child: Text('Select Date'),
-              )
-
+              ),
+              Divider(
+                height: 5.0,
+                color: Colors.red,
+              ),
+              Text('Slider'),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Value: ${(_valueS*100).round()}'),
+                    Slider(
+                      value: _valueS,
+                      onChanged: _setValue,
+                    ),
+                  ]
+              ),
             ],
           )
         ),

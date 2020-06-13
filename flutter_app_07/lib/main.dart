@@ -24,26 +24,51 @@ class _State  extends State<MyApp>{
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Header'),
+            UserAccountsDrawerHeader(
+              accountName: Text('Leandro Espino'),
+              accountEmail: Text('EspinoLeandroo@gmail.com'),
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.grey,
+                child: Text('LE'),
+              ),
+              otherAccountsPictures: <Widget>[
+                CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Text('JE'),
+                ),
+                CircleAvatar(
+                  backgroundColor: Colors.yellow,
+                  child: Text('HE'),
+                )
+              ],
             ),
+//            DrawerHeader(
+//              child: Text('Header'),
+//              decoration: BoxDecoration(
+//                color: Colors.blue,
+//              ),
+//            ),
             ListTile(
               title: Text('Opcion 1'),
+              trailing: Icon(Icons.add),
               onTap: (){},
             ),
             ListTile(
               title: Text('Opcion 2'),
+              trailing: Icon(Icons.print),
               onTap: (){},
             ),
             ListTile(
               title: Text('Opcion 3'),
+              trailing: Icon(Icons.camera),
               onTap: (){},
             ),
             ListTile(
               title: Text('Cerrar'),
+              trailing: Icon(Icons.close),
               onTap: (){
                 Navigator.pop(context);
               },

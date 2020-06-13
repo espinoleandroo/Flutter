@@ -17,7 +17,17 @@ class _State  extends State<MyApp>{
   bool _value = false;
   int _valueRB = 0;
   DateTime selectedDate;
+  TimeOfDay _timeOfDay = TimeOfDay.now();
 
+  Future<Null> _selectedTime(BuildContext) async{
+    final TimeOfDay picked = await showTimePicker(
+        context: context,
+        initialTime: _timeOfDay);
+
+    if(picked != null && picked != _timeOfDay){
+      print(_timeOfDay);
+    }
+  }
   Future<Null> _selectedDate(BuildContext context) async{
     final DateTime picked = await showDatePicker(
         context: context,
@@ -149,9 +159,18 @@ class _State  extends State<MyApp>{
                 height: 5.0,
                 color: Colors.red,
               ),
-              Text('Picker'),
+              Text('DatePicker'),
               RaisedButton(
                 onPressed: () => {_selectedDate(context)},
+                child: Text('Select Date'),
+              ),
+              Divider(
+                height: 5.0,
+                color: Colors.red,
+              ),
+              Text('TimePicker'),
+              RaisedButton(
+                onPressed: () => {_selectedTime(context)},
                 child: Text('Select Date'),
               )
 

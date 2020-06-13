@@ -16,6 +16,21 @@ class _State  extends State<MyApp>{
   bool _isChecked = false;
   bool _value = false;
   int _valueRB = 0;
+  DateTime selectedDate;
+
+  Future<Null> _selectedDate(BuildContext context) async{
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now().subtract(Duration(days: 30)),
+        lastDate: DateTime.now().add(Duration(days: 30)));
+    if(picked != null && picked != selectedDate){
+      setState(() {
+        selectedDate = picked;
+        print(selectedDate);
+      });
+    }
+  }
 
   void _hadleRadio(int value){
     setState(() {
@@ -33,7 +48,6 @@ class _State  extends State<MyApp>{
       }
     });
   }
-
   void onChangedCheckBox(bool Value){
     setState(() {
       _isChecked = Value;
@@ -44,7 +58,6 @@ class _State  extends State<MyApp>{
       _value = Value;
     });
   }
-
   void getValue(){
     if(_isChecked){
       print('check es true');
@@ -124,8 +137,16 @@ class _State  extends State<MyApp>{
                   ),
                   Text('3'),
                 ],
+              ),
+              Divider(
+                height: 5.0,
+                color: Colors.red,
+              ),
+              Text('Picker'),
+              RaisedButton(
+                onPressed: () => {_selectedDate(context)},
+                child: Text('Select Date'),
               )
-
 
             ],
           )

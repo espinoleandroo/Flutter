@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -20,18 +21,35 @@ class _State  extends State<MyApp>{
         title: Text('My app'),
       ),
       drawer: Drawer(
-        child: Container(
-          padding: EdgeInsets.all(28.0),
-          child: Column(
-            children: <Widget>[
-              Text('My Drawer'),
-              RaisedButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Return'),
-              )
-            ],
-          ),
-        ),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Opcion 1'),
+              onTap: (){},
+            ),
+            ListTile(
+              title: Text('Opcion 2'),
+              onTap: (){},
+            ),
+            ListTile(
+              title: Text('Opcion 3'),
+              onTap: (){},
+            ),
+            ListTile(
+              title: Text('Cerrar'),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            )
+          ],
+        )
       ),
     );
   }

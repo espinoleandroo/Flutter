@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp07/second.dart';
 
 void main(){
   runApp(MaterialApp(
-    home: MyApp()
+    home: MyApp(),
+    routes: <String, WidgetBuilder>{
+      '/a':(BuildContext context) => SecondActivity()
+    } ,
   ));
 }
 
@@ -54,7 +58,11 @@ class _State  extends State<MyApp>{
             ListTile(
               title: Text('Opcion 1'),
               trailing: Icon(Icons.add),
-              onTap: (){},
+              onTap: (){
+
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/a');
+              },
             ),
             ListTile(
               title: Text('Opcion 2'),
@@ -64,7 +72,10 @@ class _State  extends State<MyApp>{
             ListTile(
               title: Text('Opcion 3'),
               trailing: Icon(Icons.camera),
-              onTap: (){},
+              onTap: (){
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/a');
+              },
             ),
             ListTile(
               title: Text('Cerrar'),

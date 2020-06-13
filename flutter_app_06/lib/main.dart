@@ -31,7 +31,6 @@ class _State  extends State<MyApp>{
       });
     }
   }
-
   void _hadleRadio(int value){
     setState(() {
       _valueRB = value;
@@ -82,34 +81,42 @@ class _State  extends State<MyApp>{
         child: Center(
           child: Column(
             children: <Widget>[
-              Divider(
-                height: 5.0,
-                color: Colors.red,
-              ),
               Text('Checkbox'),
-              Checkbox(
-                value: _isChecked,
-                onChanged: (bool value){onChangedCheckBox(value);},
-              ),
-              RaisedButton(
-                onPressed: getValue,
-                child: Text('Click'),
-              ),
               Divider(
                 height: 5.0,
                 color: Colors.red,
               ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Checkbox(
+                      value: _isChecked,
+                      onChanged: (bool value){onChangedCheckBox(value);},
+                    ),
+                    RaisedButton(
+                      onPressed: getValue,
+                      child: Text('Click'),
+                    ),
+                  ]),
               Text('Switch'),
-              Switch(
-                value: _value,
-                onChanged: (bool value){onChangedSwitch(value);},
-                activeColor: Colors.green,
-                inactiveTrackColor: Colors.red,
+              Divider(
+                height: 5.0,
+                color: Colors.red,
               ),
-              RaisedButton(
-                onPressed: getValue,
-                child: Text('Click'),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Switch(
+                    value: _value,
+                    onChanged: (bool value){onChangedSwitch(value);},
+                    activeColor: Colors.green,
+                    inactiveTrackColor: Colors.red,
+                  ),
+                  RaisedButton(
+                    onPressed: getValue,
+                    child: Text('Click'),
+                  ),
+                ]),
               Divider(
                 height: 5.0,
                 color: Colors.red,

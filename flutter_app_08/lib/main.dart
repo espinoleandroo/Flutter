@@ -11,10 +11,36 @@ class MyApp extends StatefulWidget{
   _State createState() => _State();
 
 }
+enum Options {YES, NO}
 
 class _State  extends State<MyApp>{
   final GlobalKey<ScaffoldState> _scaffold = GlobalKey<ScaffoldState>();
-  
+
+  Future _event() async{
+    switch(
+      await showDialog(
+        context: context,
+        child: SimpleDialog(
+          title: Text('esto es un dialog'),
+          children: <Widget>[
+            SimpleDialogOption(
+              child: Text('ok'),
+              onPressed: (){
+                Navigator.pop(context, 'YES');
+              },
+            ),
+            SimpleDialogOption(
+              child: Text('Cancel'),
+              onPressed: (){
+                Navigator.pop(context, 'NO');
+              },
+            )
+          ],
+        )
+      )
+    ){}
+  }
+
   void _showSnack(){
     _scaffold.currentState.showSnackBar(SnackBar(content: Text('Esto es un Snack'),));
   }
@@ -33,6 +59,10 @@ class _State  extends State<MyApp>{
               RaisedButton(
                 onPressed: _showSnack,
                 child: Text('Click')
+              ),
+              RaisedButton(
+                  onPressed: _event,
+                  child: Text('Click')
               )
             ]
           )
